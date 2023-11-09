@@ -1,5 +1,5 @@
 # Strassen's Matrix Multiplication
-*In order to keep things simple, we will mostly be working with square matrices with dimension $n = 2^m$. Methods to deal with matrices not of this form will be elaborated on later.*
+*In order to keep things simple, we will mostly be working with square matrices with dimensions that are powers of 2. Methods to deal with matrices not of this form will be elaborated on later.*
 
 ## Matrix Multiplication and Complexity
 Suppose we are given two matrices $A$ and $B$, and we want to multiply them. By definition, the product of the two matrices M is given by:
@@ -106,7 +106,7 @@ Case 1: If $f(n) = O(n^{\log_ba-\epsilon})$ for some $\epsilon > 0$, then $T(n) 
 Case 2: If $f(n) = \Theta(n^{\log_ba})$, then $T(n) = \Theta(n^{\log_ba}\log n)$.\
 Case 3: If $f(n) = \Omega(n^{\log_ba+\epsilon})$ for some $\epsilon > 0$ and $af(n/b)\leq cf(n)$ then $T(n) = \Theta(f(n))$.
 
-*If you have never heard of or learned the Master Theorem, it is a nifty tool that to compute the complexity of recursive algorithms. Try it with common recursive algorithms such as merge sort to convince yourself the Master Theorem holds.*
+*If you have never heard of or learned the Master Theorem, it is a nifty tool to compute the complexity of recursive algorithms. Try it with common recursive algorithms such as merge sort to convince yourself the Master Theorem holds.*
 
 In our case, $a=8$, $b=2$, and $f(n)=\Theta(n^2)$, giving us case 1. Thus, this recursive computation of $M=AB$ is tightly bounded by $n^{\log_2 8} = n^3$, and thus is $\Theta(n^3)$, which is not really an improvement to the naive method we started with.
 
