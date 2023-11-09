@@ -47,7 +47,7 @@ a_{43} & a_{44}
 \end{bmatrix}
 ```
 
-$$
+```math
 B = 
 \begin{bmatrix}
 b_{11} & b_{12} & b_{13} & b_{14}\\[0.3em]
@@ -81,7 +81,7 @@ B_{22} =
 b_{33} & b_{34}\\[0.3em]
 b_{43} & b_{44}
 \end{bmatrix}
-$$
+```
 
 Multiplying the two matrices $M = AB$, we can construct each sub-matrix of $M$ by multplying sub-matrices of $A$ and $B$, treating the sub-matrices as its own element in the matrix. The following is a visual aid from Inside Code's video to help conceptualize this idea.
 
@@ -89,12 +89,12 @@ Multiplying the two matrices $M = AB$, we can construct each sub-matrix of $M$ b
 
 In our case, we can compute the matrix $M$ as follows:
 
-$$
+```math
 M_{11} = A_{11}B_{11} + A_{12}B_{21}\\
 M_{12} = A_{11}B_{12} + A_{12}B_{22}\\
 M_{21} = A_{21}B_{11} + A_{22}B_{21}\\
 M_{22} = A_{21}B_{12} + A_{22}B_{22}
-$$
+```
 
 By now, a recursive nature to this problem is exposed. Any quadrant of $M$ is computed by finding the sum of two matrices, which themselves can be computed this way. As we can see, to compute the product of a matrix, we are required to compute 8 new matrices at each recursive step. To find computation complexity of this algorithm, we use the Master Theorem. 
 
@@ -111,7 +111,7 @@ In our case, $a=8$, $b=2$, and $f(n)=\Theta(n^2)$, giving us case 1. Thus, this 
 ## Strassen's Algorithm
 Instead of computing 8 matrix multiplications, Strassen's Algorithm defines 7 matrices that we compute with matrix multiplication:
 
-$$
+```math
 C_1 = (A_{11}+A_{12})(B_{11}+B_{22})\\
 C_2 = (A_{21}+A_{22})B_{11}\\
 C_3 = A_{11}(B_{12}-B_{22})\\
@@ -119,16 +119,16 @@ C_4 = A_{22}(B_{21}-B_{11})\\
 C_5 = (A_{11}+A_{12})B_{22}\\
 C_6 = (A_{21}-A_{11})(B_{11}+B_{12})\\
 C_7 = (A_{12}-A_{22})(B_{21}+B_{22})
-$$
+```
 
 Then, to compute each quadrant of our solution $M$:
 
-$$
+```math
 M_{11} = C_1 + C_4 - C_5 + C_7\\
 M_{12} = C_3 + C_5\\
 M_{21} = C_2 + C_4\\
 M_{22} = C_1 - C_2 + C_3 + C_6
-$$
+```
 
 We do this recursively everytime we compute the multiplication for any $C_i$. This lets us do 7 multiplications instead of the 8 we described in the previous method. Using the Master Theorem again with $a=7, b=2$ and $f(n)=\Theta(n^2)$, we have case 1 again. The runtime is thus tightly bounded by $n^{\log_27} \approx n^{2.8074}$, meaning the algorithm is $\Theta(n^{2.8074})$. This is an improvement compared to the naive $\Theta(n^3)$ algorithm. Does this mean that Strassen's Algorithm is better?
 
