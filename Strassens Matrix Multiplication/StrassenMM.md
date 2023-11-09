@@ -11,7 +11,7 @@ When both $A$ and $B$ are $n \times n$, $M$ will also be $n \times n$. With $n^2
 ## Basis of The Algorithm
 Given two matrices $A$ and $B$ that are $n \times n$ where $n = 2^m$ for some $m$, both $A$ and $B$ can be decomposed into four sub-matrices:
 
-$$
+```math
 A = 
 \begin{bmatrix}
 a_{11} & a_{12} & a_{13} & a_{14} \\[0.3em]
@@ -45,7 +45,7 @@ A_{22} =
 a_{33} & a_{34}\\[0.3em]
 a_{43} & a_{44}
 \end{bmatrix}
-$$
+```
 
 $$
 B = 
