@@ -43,4 +43,4 @@ value &= 0.15625
 \end{align}
 ```
 
-However, we do note there are special bit patterns that are reserved for certain numbers such as +/- infinity, 0, NaN, etc. 
+However, note that there are special bit patterns that are reserved for certain numbers such as +/- infinity, 0, NaN, etc. 
