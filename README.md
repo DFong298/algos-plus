@@ -2,6 +2,9 @@
 A repository of Data Structures and Algorithms that aren't taught in school (for an undergraduate, at least)
 
 PLANNED DSA:
-Fibonacci Heaps
-FFT
+Fibonacci Heaps,
+FFT,
 Floyd-Warshall
+
+
+CURRENTLY ON HOLD DUE TO EXAMS
