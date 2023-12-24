@@ -1,6 +1,6 @@
 # Fast Inverse Square Root
 
-In computer graphics (video games especially), programs will use inverse square roots to compute angles of incidence, relfection, lighting, and shading. This operation is repeated millions of times to simulate an environment. But this poses a problem; divison and square roots are slow operations at a low level. However, the developers of Quake III Arena (1999) came up with a way to approximate the inverse square root of 32-bit floating point numbers, with an error of at most one percent. Although this algorithm is not used anymore due to technological advances, it is still an interesting algorithm to consider. The following code is the implementation of this algorithm, with the original code and comments included.
+In computer graphics (video games especially), programs will use inverse square roots to compute angles of incidence, reflection, lighting, and shading. This operation is repeated millions of times to simulate an environment. But this poses a problem; divison and square roots are slow operations at a low level. However, the developers of Quake III Arena (1999) came up with a way to approximate the inverse square root of 32-bit floating point numbers, with an error of at most one percent. Although this algorithm is not used anymore due to technological advances, it is still an interesting algorithm to consider. The following code is the implementation of this algorithm, with the original code and comments included.
 
 ```C
 float q_rsqrt(float number)
@@ -44,3 +44,13 @@ value &= 0.15625
 ```
 
 However, note that there are special bit patterns that are reserved for certain numbers such as +/- infinity, 0, NaN, etc. 
+
+## Evil Floating Point Bit Level Hacking
+
+Let's look at and try to undertand the line of the code that says:
+```C
+i  = * ( long * ) &y; 
+```
+Floating point numbers were never designed for bit manipulation. However, longs were. So our goal here would be to convert whatever floating point value we have stored in `y`, copied to a long, without doing the direct conversion, since the direct conversion and the original number will differ. 
+
+In order to accomplish this, instead of direction converting `y` to a long, we tell C to read the memory address of `y` as a long instead. With this, we are able to store all 32 bits of `y` as a long, stored in another variable `i`. Now, we can apply bit manipulation on this new variable, without the restriction of it being a floating point number. 
