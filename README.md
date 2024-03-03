@@ -6,5 +6,3 @@ Fibonacci Heaps,
 FFT,
 Floyd-Warshall
 
-
-CURRENTLY ON HOLD DUE TO EXAMS
